@@ -17,8 +17,8 @@ const User = {
 
   findByEmail: email => db.one( FIND_BY_EMAIL, [email] ),
 
-  create: ( email, password, salt ) =>
-    db.one( CREATE_USER, [ email, password, salt ]),
+  create: ( email, password, salt, name ) =>
+    db.one( CREATE_USER, [ email, password, salt, name ]),
 
   generateHash: password => {
     const salt = bcrypt.genSaltSync(8)

@@ -9,7 +9,7 @@ const authConfig = {
 }
 
 router.post( '/signup', ( request, response, next ) => {
-  const { email, password } = request.body
+  const { email, password, name } = request.body
 
   User.findByEmail( email )
     .then( user => {
@@ -20,7 +20,7 @@ router.post( '/signup', ( request, response, next ) => {
       if( error.name === 'QueryResultError' ) {
         const { hash, salt } = User.generateHash( password )
 
-        User.create( email, hash, salt )
+        User.create( email, hash, salt, name )
           .then( user => {
             request.login( user, error => {
               if( error ) {

@@ -6,6 +6,9 @@ block content
     h1 This is the signup Form 
     form.signup( action='/users/signup', method='POST' )
       .form-group
+        label( for='name' ) Name
+        input.name.form-control( name='name', type='name', placeholder='Name' )
+      .form-group
         label( for='email' ) Email address
         input.email.form-control( name='email', type='email', placeholder='Enter email' )
       .form-group
